@@ -2,10 +2,14 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser">
 
-  <browser:page
-    name="gs-group-messages-topicsdigest-send.html"
-    for="Products.GSContent.interfaces.IGSSiteFolder"
-    class=".sendDigests.SendAllDigests"
-    permission="zope2.Public"
-    layer="gs.skin.ogn.edem.interfaces.IEDemLayer"/>
+  <!--The Topics tab on the group page-->
+  <browser:viewlet 
+    name="gs-shim-group-messages-topics-tab" 
+    manager="gs.shim.group.home.interfaces.IGroupHomepageTasks" 
+    template="browser/templates/topics.pt" 
+    class="gs.shim.group.messages.topics.tab.TopicsTab" 
+    permission="zope2.Public" 
+    layer="gs.skin.ogn.edem.interfaces.IEDemLayer" 
+    weight="10" 
+    title="Topics" />
 </configure>
