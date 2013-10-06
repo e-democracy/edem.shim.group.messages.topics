@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!--The Topics tab on the group page-->
+  <browser:viewlet 
+    name="gs-shim-group-messages-topics-tab" 
+    manager="gs.shim.group.home.interfaces.IGroupHomepageTasks" 
+    template="browser/templates/topics.pt" 
+    class="gs.shim.group.messages.topics.tab.TopicsTab" 
+    permission="zope2.Public" 
+    layer="gs.skin.ogn.edem.interfaces.IEDemLayer" 
+    weight="10" 
+    title="Topics" />
+</configure>

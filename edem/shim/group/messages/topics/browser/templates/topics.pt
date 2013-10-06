@@ -1,0 +1,69 @@
+<div id="gs-group-messages-topics">
+  <div id="gs-group-messages-topics-search" class="gs-search"
+     tal:condition="view/viewTopics">
+    <div tal:condition="view/canPost/canPost"
+      id="gs-group-messages-topics-tasks">
+      <ul class="inline-list">
+        <li><a href="messages/newTopic.html"><strong>Start</strong> a 
+          topic</a> using the Web</li>
+        <li><a tal:attributes="href string:mailto:${view/email}"
+            href="#" >Email
+            <code class="email" 
+              tal:content="view/email">the email address</code></a>.</li>
+      </ul>
+    </div><!--gs-group-messages-topics-tasks-->
+    <div class="gs-search-entry search">
+      <input type="text" name="s" 
+        id="gs-group-messages-topics-search-input" value=""
+        title="Search this group"/>
+    <button id="gs-group-messages-topics-search-button">Search</button>
+    </div><!--gs-group-messages-topics-search-->
+    <p id="gs-group-messages-topics-loading" class="gs-search-loading"
+       style="display:none;">
+      <img src="/++resource++anim/wait.gif"/> 
+      Loading the topics
+    </p><!--gs-group-messages-topics-loading-->
+    <div id="gs-group-messages-topics-latest" 
+         class="gs-search-results items-list">
+      &#160;
+    </div><!--gs-group-messages-topics-latest-->
+    <div id="gs-group-messages-topics-toolbar" 
+         class="toolbar gs-search-toolbar">
+      <span class="ui-widget-header ui-corner-all">
+        <button id="gs-group-messages-topics-toolbar-prev"
+                class="gs-search-toolbar-previous">Newer</button>
+        <button id="gs-group-messages-topics-toolbar-next"
+                class="gs-search-toolbar-next">Older</button>
+      </span>
+    </div><!--gs-group-messages-topics-toolbar-->
+    <div id="gs-group-messages-topics-advanced" 
+      class="advanced disclosureWidget">
+      <p>
+        <a class="disclosureButton">Advanced</a>
+      </p>
+      <ul class="inline-list disclosureShowHide" style="display:none;">
+        <li><a href="messages/topics.html">The full 
+            <strong>topics</strong> page.</a></li>
+        <li><a type="application/atom+xml" class="alternateATOM"
+          tal:define="title string:Topics in ${view/groupInfo/name};
+            url string:/s/search.atom?t=1&amp;p=0&amp;g=${view/groupInfo/id}"
+          tal:attributes="href url" href="#">Web feed</a></li>
+        <li><a id="gs-group-messages-topics-advanced-search-link"
+          tal:define="url string:/s/?g=${view/groupInfo/id}&amp;i=0"
+          tal:attributes="href url" href="#">Advanced Search</a></li>
+      </ul>
+    </div><!--gs-group-messages-topics-advanced-->
+  </div><!--id="gs-group-messages-topics-search-->
+  <tal:block condition="not:view/viewTopics">
+    <!--We must be looking at a private group-->
+    <p>
+      You must be a logged in member of 
+      <span class="group" tal:content="view/groupInfo/name">this group</span>
+      to view the topics.
+    </p>
+    <tal:block 
+      replace="structure provider:groupserver.GroupHomepageUsBarLinks">
+      &#160;
+    </tal:block>
+  </tal:block>  
+</div><!--gs-group-messages-topics-->
